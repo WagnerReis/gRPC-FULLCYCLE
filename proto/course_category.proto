@@ -1,6 +1,6 @@
 syntax = "proto3";
 package pb;
-option go_package = "internal/pb";
+option go_package = "/internal/pb";
 
 message Category {
   string id = 1;
