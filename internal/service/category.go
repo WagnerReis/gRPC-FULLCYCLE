@@ -1,11 +1,13 @@
 package service
 
 import (
+	"context"
+
 	"github.com/WagnerReis/gRPC-FULLCYCLE/internal/database"
 	"github.com/WagnerReis/gRPC-FULLCYCLE/internal/pb"
 )
 
-type CategoryService struct{
+type CategoryService struct {
 	pb.UnimplementedCategoryServiceServer
 	CategoryDB database.Category
 }
@@ -23,12 +25,12 @@ func (c *CategoryService) CreateCategory(ctx context.Context, in *pb.CreateCateg
 	}
 
 	categoryResponse := &pb.Category{
-		Id: category.ID,
-		Name: category.Name,
+		Id:          category.ID,
+		Name:        category.Name,
 		Description: category.Description,
 	}
 
 	return &pb.CategoryResponse{
-		Category: categoryResponse
+		Category: categoryResponse,
 	}, nil
 }
